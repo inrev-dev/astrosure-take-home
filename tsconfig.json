@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "strictPropertyInitialization": false,
+        "strictFunctionTypes": true,
+        "useUnknownInCatchVariables": false,
+        "module": "commonjs",
+        "declaration": true,
+        "removeComments": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "ES2021",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "incremental": true,
+        "skipLibCheck": true,
+        "strictBindCallApply": false,
+        "forceConsistentCasingInFileNames": false,
+        "noFallthroughCasesInSwitch": false,
+        "noErrorTruncation": false,
+        "jsx": "react",
+        "lib": [
+            "ES2021"
+        ],
+        "esModuleInterop": true,
+        "disableSizeLimit": true
+    }
+}

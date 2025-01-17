@@ -1,6 +1,7 @@
 import type { MissionConditionDataset } from "./main";
 import * as astrosure from "./main";
 
+
 const getDefaultMockLunarLandingConditionData = (unknownDangerLevel: number = 10): MissionConditionDataset<typeof astrosure.lunarLandingScoringModel> => ({
     atmosphericPressure: "low",
     solarWindSpeed: "medium",
@@ -40,6 +41,10 @@ describe("AstroSure Quoting Engine", () => {
 
         expect(result).toEqual(
             [
+                // Small ship = 0.02 base rate, 
+                // 93 mission score = 0.008 rate adjustment
+                // 0.028 rate
+                // 1000000000 * 0.028 = 28000000
                 {
                     companyName: "NASA",
                     policyAmount: 1000000000,
@@ -47,8 +52,8 @@ describe("AstroSure Quoting Engine", () => {
                     spaceshipSize: "small",
                     missionType: "lunar-landing",
                     missionScore: 93,
-                    rate: 0.018,
-                    premium: 18000000,
+                    rate: 0.028,
+                    premium: 28000000,
                     status: "approved"
                 }
             ]
@@ -75,6 +80,10 @@ describe("AstroSure Quoting Engine", () => {
 
         expect(result).toEqual(
             [
+                // Small ship = 0.02 base rate, 
+                // 20 mission score = -0.002 rate adjustment
+                // 0.018 rate
+                // 1000000000 * 0.018 = 18000000
                 {
                     companyName: "NASA",
                     policyAmount: 1000000000,
@@ -82,8 +91,8 @@ describe("AstroSure Quoting Engine", () => {
                     spaceshipSize: "small",
                     missionType: "shuttle",
                     missionScore: 1,
-                    rate: 0.028,
-                    premium: 28000000,
+                    rate: 0.018,
+                    premium: 18000000,
                     status: "declined"
                 }
             ]
@@ -177,6 +186,10 @@ describe("AstroSure Quoting Engine", () => {
 
         expect(result).toEqual(
             [
+                // Large ship = 0.03 base rate, 
+                // 20 mission score = -0.002 rate adjustment
+                // 0.028 rate
+                // 1000000000 * 0.028 = 28000000
                 {
                     companyName: "NASA",
                     policyAmount: 1000000000,
@@ -184,8 +197,8 @@ describe("AstroSure Quoting Engine", () => {
                     spaceshipSize: "large",
                     missionType: "lunar-landing",
                     missionScore: 20,
-                    rate: 0.038,
-                    premium: 38000000,
+                    rate: 0.028,
+                    premium: 28000000,
                     status: "approved"
                 },
                 {
@@ -199,6 +212,10 @@ describe("AstroSure Quoting Engine", () => {
                     premium: 10000000,
                     status: "approved"
                 },
+                // Small ship = 0.02 base rate, 
+                // 60 mission score = 0.008 rate adjustment
+                // 0.028 rate
+                // 250000000 * 0.028 = 7000000
                 {
                     companyName: "NASA",
                     policyAmount: 250000000,
@@ -206,8 +223,8 @@ describe("AstroSure Quoting Engine", () => {
                     spaceshipSize: "small",
                     missionType: "lunar-landing",
                     missionScore: 60,
-                    rate: 0.018,
-                    premium: 4500000,
+                    rate: 0.028,
+                    premium: 7000000,
                     status: "approved"
                 }
             ]
@@ -280,6 +297,10 @@ describe("AstroSure Quoting Engine", () => {
 
         expect(result).toEqual(
             [
+                // Small ship = 0.02 base rate, 
+                // 20 mission score = -0.002 rate adjustment
+                // 0.018 rate
+                // 1000000000 * 0.018 = 18000000
                 {
                     companyName: "SpaceX",
                     policyAmount: 1000000000,
@@ -287,10 +308,14 @@ describe("AstroSure Quoting Engine", () => {
                     spaceshipSize: "small",
                     missionType: "shuttle",
                     missionScore: 20,
-                    rate: 0.028,
-                    premium: 28000000,
+                    rate: 0.018,
+                    premium: 18000000,
                     status: "approved"
                 },
+                // Small ship = 0.02 base rate, 
+                // 20 mission score = -0.002 rate adjustment
+                // 0.018 rate
+                // 500000000 * 0.018 = 9000000
                 {
                     companyName: "NASA",
                     policyAmount: 500000000,
@@ -298,10 +323,14 @@ describe("AstroSure Quoting Engine", () => {
                     spaceshipSize: "small",
                     missionType: "lunar-landing",
                     missionScore: 20,
-                    rate: 0.028,
-                    premium: 14000000,
+                    rate: 0.018,
+                    premium: 9000000,
                     status: "approved"
                 },
+                // Small ship = 0.02 base rate, 
+                // 5 mission score = -0.002 rate adjustment
+                // 0.018 rate
+                // 500000000 * 0.018 = 9000000
                 {
                     companyName: "NASA",
                     policyAmount: 500000000,
@@ -309,10 +338,14 @@ describe("AstroSure Quoting Engine", () => {
                     spaceshipSize: "small",
                     missionType: "shuttle",
                     missionScore: 5,
-                    rate: 0.028,
-                    premium: 14000000,
+                    rate: 0.018,
+                    premium: 9000000,
                     status: "declined"
                 },
+                // Large ship = 0.03 base rate, 
+                // 20 mission score = -0.002 rate adjustment
+                // 0.028 rate
+                // 1500000000 * 0.028 = 42000000
                 {
                     companyName: "SpaceX",
                     policyAmount: 1500000000,
@@ -320,10 +353,14 @@ describe("AstroSure Quoting Engine", () => {
                     spaceshipSize: "large",
                     missionType: "shuttle",
                     missionScore: 20,
-                    rate: 0.038,
-                    premium: 57000000,
+                    rate: 0.028,
+                    premium: 42000000,
                     status: "declined"
                 },
+                // Small ship = 0.02 base rate, 
+                // 20 mission score = -0.002 rate adjustment
+                // 0.018 rate
+                // 1000000000 * 0.018 = 18000000
                 {
                     companyName: "NASA",
                     policyAmount: 1000000000,
@@ -331,10 +368,14 @@ describe("AstroSure Quoting Engine", () => {
                     spaceshipSize: "small",
                     missionType: "shuttle",
                     missionScore: 20,
-                    rate: 0.028,
-                    premium: 28000000,
+                    rate: 0.018,
+                    premium: 18000000,
                     status: "approved"
                 },
+                // Large ship = 0.04 base rate, 
+                // 20 mission score = -0.002 rate adjustment
+                // 0.028 rate
+                // 1000000000 * 0.028 = 28000000
                 {
                     companyName: "NASA",
                     policyAmount: 1000000000,
@@ -342,8 +383,8 @@ describe("AstroSure Quoting Engine", () => {
                     spaceshipSize: "large",
                     missionType: "shuttle",
                     missionScore: 20,
-                    rate: 0.038,
-                    premium: 38000000,
+                    rate: 0.028,
+                    premium: 28000000,
                     status: "declined"
                 }
             ]

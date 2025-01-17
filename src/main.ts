@@ -251,8 +251,8 @@ export const createQuote = async (request: QuoteRequest, quoteStorage: Quote[]):
   const missionScoringService = MissionScoringServiceFactory.create(request.missionType);
   const missionScore = await missionScoringService.calculateMissionScore();
 
-  const totalPolicyAmmount = calculateTotalPolicyAmount(request, quoteStorage);
-  const status = calculateStatus(missionScore, totalPolicyAmmount)
+  const totalPolicyAmount = calculateTotalPolicyAmount(request, quoteStorage);
+  const status = calculateStatus(missionScore, totalPolicyAmount)
   const rate = calculateRate(missionScore, request)
   const premium = rate * request.policyAmount
 

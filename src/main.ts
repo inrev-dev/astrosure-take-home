@@ -256,7 +256,5 @@ export const createQuote = async (request: QuoteRequest, quoteStorage: Quote[]):
   const rate = calculateRate(missionScore, request)
   const premium = rate * request.policyAmount
 
-  quoteStorage.push({ ...request, missionScore, rate, premium, status });
-
-  return quoteStorage;
+  return [...quoteStorage, { ...request, missionScore, rate, premium, status }]
 };
